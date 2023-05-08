@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Document</title>
+</head>
+<body>
+    <head>
+
+        <title>Validar dirección de correo electrónico</title>
+        <script src="jquery-3.6.4.min.js"></script>
+      </head>
+     
+      </body>
+      <body>
+        <p id="textToAct">Holaa! </p>
+        <input type="button" onclick="demoVisibility()" value="Ocultar/Mostrar">
+        
+        <script>
+        
+        function demoVisibility() {
+          if (document.getElementById("textToAct").style.visibility == "hidden")
+          document.getElementById("textToAct").style.visibility = "visible"
+          else
+            document.getElementById("textToAct").style.visibility = "hidden"
+        }
+        </script>
+        
+        <form>
+          <label for="email">Dirección de correo electrónico:</label>
+          <input type="email" id="email" name="email" required>
+          <button id="validate" type="submit">Validar si es correcto</button>
+        </form>
+        <div id="result"></div>
+        <script>
+          function validateEmailAddress(email) {
+            var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(email);
+          }
+          function validate() {
+            $("#result").text("");
+            var emailaddress = $("#email").val();
+            if (validateEmailAddress(emailaddress)) {
+              $("#result").text(emailaddress + " valido :)");
+              $("#result").css("color", "green");
+            } else {
+              $("#result").text(emailaddress + " no es correcto, intenta de nuevo:(");
+              $("#result").css("color", "red");
+            }
+            return false;
+          }
+          $("#validate").bind("click", validate);
+        </script>
+      </body>      
+</body>
+</html>
